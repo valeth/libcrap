@@ -3,10 +3,10 @@
 
 ## Objects
 
-- [x] List (Doubly Linked List)
-- [ ] Vec (Dynamic Array)
-- [ ] String
-- [ ] Channel (Message Queue)
+- [x] `List` (Doubly Linked List)
+- [ ] `Vec` (Dynamic Array)
+- [ ] `String`
+- [ ] `Channel` (Message Queue)
 
 
 ## Conversions
