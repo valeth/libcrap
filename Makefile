@@ -5,7 +5,7 @@ VERSION_MINOR = 1
 VERSION_PATCH = 0
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
-CFLAGS = -Wall -Wextra -Werror -std=c99 -rdynamic -O2 -Isrc
+CFLAGS = -Wall -Wextra -Werror -std=c99 -O2 -Isrc
 LDFLAGS =
 
 BUILD_DIR = build
@@ -41,9 +41,9 @@ $(TARGET): $(OBJECTS) | builddir
 
 .PHONY: builddir clean tests
 
-all: dynamic
+all: shared
 
-dynamic: $(TARGET_SO)
+shared: $(TARGET_SO)
 
 static: $(TARGET)
 
@@ -55,8 +55,8 @@ clean:
 
 
 # --- Tests ---
-test: $(TESTS) | dynamic
+test: $(TESTS)
 	@tests/test_exec.py
 
-$(TESTS_DIR)/%_test: $(TESTS_DIR)/%_test.c
+$(TESTS_DIR)/%_test: $(TESTS_DIR)/%_test.c | shared
 	$(CC) $(CFLAGS) -Itests -L$(PWD)/build -lcrap -ldl -o $@ $<
