@@ -51,7 +51,7 @@ builddir:
 	@mkdir -pv $(BUILD_DIR)/objects
 
 clean:
-	@rm -vr $(BUILD_DIR)
+	@rm -vr $(BUILD_DIR) $(TESTS)
 
 
 # --- Tests ---
@@ -59,4 +59,5 @@ test: $(TESTS)
 	@tests/test_exec.py
 
 $(TESTS_DIR)/%_test: $(TESTS_DIR)/%_test.c | shared
-	$(CC) $(CFLAGS) -Itests -L$(PWD)/build -lcrap -ldl -o $@ $<
+	@echo Working Directory 1: $(PWD)
+	$(CC) $< -o $@ $(CFLAGS) -Itests -L$(PWD)/build -lcrap

@@ -6,13 +6,13 @@ import errno
 from glob import glob
 
 def run_test(name: str) -> bool:
-    env = {
-        **os.environ,
-        "LD_LIBRARY_PATH": os.path.join(os.getcwd(), "build")
-    }
+    cwd = os.getcwd()
+    print("Working directory 2: {}".format(cwd))
+    env = os.environ.update({ "LD_LIBRARY_PATH": os.path.join(cwd, "build") })
+
     ret = subprocess.call(name, env=env, stderr=subprocess.STDOUT)
     if ret == -11:
-        print(f"Segmentation fault in {name}!")
+        print("Segmentation fault in {}!".format(test))
     return ret == 0
 
 def run_tests() -> (int, list, list):
@@ -23,12 +23,12 @@ def run_tests() -> (int, list, list):
 
     for test_exe in test_exes:
         test = os.path.basename(test_exe)
-        print(f"Running {test}...")
+        print("Running {}...".format(test))
         if run_test(test_exe):
-            print(f"Test {test} successful")
+            print("Test {} successful".format(test))
             success.append(test)
         else:
-            print(f"Test {test} failed")
+            print("Test {} failed".format(test))
             failure.append(test)
 
     return (count, success, failure)
