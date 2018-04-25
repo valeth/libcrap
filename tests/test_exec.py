@@ -2,20 +2,22 @@
 
 import subprocess
 import os
-import errno
+import sys
 from glob import glob
 
-def run_test(name: str) -> bool:
+def run_test(name: str, valgrind=False) -> bool:
     cwd = os.getcwd()
-    print("Working directory 2: {}".format(cwd))
-    env = os.environ.update({ "LD_LIBRARY_PATH": os.path.join(cwd, "build") })
+    env = os.environ.update({
+        "LD_LIBRARY_PATH": os.path.join(cwd, "build")
+    })
 
-    ret = subprocess.call(name, env=env, stderr=subprocess.STDOUT)
+    cmd = ["valgrind", name] if valgrind else name
+    ret = subprocess.call(cmd, env=env, stderr=subprocess.STDOUT)
     if ret == -11:
-        print("Segmentation fault in {}!".format(test))
+        print("Segmentation fault in {}!".format(name))
     return ret == 0
 
-def run_tests() -> (int, list, list):
+def run_tests(valgrind=False) -> (int, list, list):
     success = []
     failure = []
     test_exes = glob("tests/*_test")
@@ -24,7 +26,7 @@ def run_tests() -> (int, list, list):
     for test_exe in test_exes:
         test = os.path.basename(test_exe)
         print("Running {}...".format(test))
-        if run_test(test_exe):
+        if run_test(test_exe, valgrind):
             print("Test {} successful".format(test))
             success.append(test)
         else:
@@ -42,6 +44,13 @@ def summary(count: int, successful: int, failed: int):
         "-" * 30
     )
 
-if __name__ == "__main__":
-    count, success, failure = run_tests()
+def main(args):
+    valgrind = False
+    if len(args) > 1:
+        valgrind = (args[1] == "--valgrind") or False
+    count, success, failure = run_tests(valgrind)
     summary(count, len(success), len(failure))
+
+
+if __name__ == "__main__":
+    main(sys.argv)

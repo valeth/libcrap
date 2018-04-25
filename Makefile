@@ -58,6 +58,9 @@ clean:
 test: $(TESTS)
 	@tests/test_exec.py
 
+test_valgrind: $(TESTS)
+	@tests/test_exec.py --valgrind
+
 $(TESTS_DIR)/%_test: $(TESTS_DIR)/%_test.c | shared
 	@echo Working Directory 1: $(PWD)
 	$(CC) $< -o $@ $(CFLAGS) -Itests -L$(PWD)/build -lcrap
