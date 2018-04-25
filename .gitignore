@@ -55,4 +55,5 @@ dkms.conf
 build/
 tests/*_test
 vgcore*
+valgrind*
 .mypy_cache

@@ -11,7 +11,17 @@ def run_test(name: str, valgrind=False) -> bool:
         "LD_LIBRARY_PATH": os.path.join(cwd, "build")
     })
 
-    cmd = ["valgrind", name] if valgrind else name
+    if valgrind:
+        cmd = [
+            "valgrind",
+            "--leak-check=full",
+            "--vgdb=no",
+            "--time-stamp=yes",
+            "--log-file=valgrind.log",
+            name
+        ]
+    else:
+        cmd = name
     ret = subprocess.call(cmd, env=env, stderr=subprocess.STDOUT)
     if ret == -11:
         print("Segmentation fault in {}!".format(name))
