@@ -10,11 +10,6 @@
 #define LOG_TEST(FMT, ...)\
     logger(stdout, LVL_TEST, __FILE__, __LINE__, __func__, FMT, ##__VA_ARGS__)
 
-#define TEST_STATE(RET) (RET ? true : (++fail_count && false))
-
-#define TEST_MSG(MSG, NAME, RET)\
-    sprintf(MSG, "%s %s", (TEST_STATE(RET) ? (CO_GRN "[ OK ] " CO_NON) : (CO_RED "[FAIL] " CO_NON)), NAME)
-
 
 #define describe(NAME)\
     int main(void) {\
@@ -34,7 +29,9 @@
             bool failed = false;
 
 #define example_end\
-        TEST_MSG(msg, example_name, !failed);\
+        unless(failed) {\
+            sprintf(msg, CO_GRN "[ OK ]"CO_NON"  %s", example_name);\
+        }\
         if (msg) { LOG_TEST("%s", msg); }\
         free(msg);\
         return;\
@@ -45,7 +42,10 @@
     }
 
 #define assert(EXPECT)\
-    if (!(EXPECT)) { goto failed; }
+    if (!(EXPECT)) {\
+        sprintf(msg, CO_RED"[FAIL]"CO_NON"  %s:%d: %s ", example_name, __LINE__, #EXPECT);\
+        goto failed;\
+    }
 
 #define assert_true(A)\
     assert((A) == true)
@@ -56,7 +56,8 @@
 #define assert_eq(E, A)\
     assert((A) == (E))
 
-#define assert_neq(E, A) assert((A) != (E))
+#define assert_neq(E, A)\
+    assert((A) != (E))
 
 
 typedef void (*testfunc)(char *msg);
