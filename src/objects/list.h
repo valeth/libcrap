@@ -1,7 +1,7 @@
-/// @brief  Doubly Linked List
-/// @author Patrick Auernig
-/// @date   2018-04-01
-/// @file   list.h
+//! @brief  Doubly Linked List
+//! @author Patrick Auernig
+//! @date   2018-04-01
+//! @file   list.h
 
 #pragma once
 

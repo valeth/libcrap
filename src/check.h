@@ -1,6 +1,7 @@
-/// @author Patrick Auernig
-/// @date   2018-04-01
-/// @file   check.h
+//! @brief  Various check macros
+//! @author Patrick Auernig
+//! @date   2018-04-01
+//! @file   check.h
 
 #pragma once
 

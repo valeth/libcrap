@@ -1,7 +1,7 @@
-/// @brief  Dynamic Array
-/// @author Patrick Auernig
-/// @date   2018-04-25
-/// @file   vec.h
+//! @brief  Dynamic Array
+//! @author Patrick Auernig
+//! @date   2018-04-25
+//! @file   vec.h
 
 #pragma once
 

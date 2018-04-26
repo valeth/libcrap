@@ -1,7 +1,7 @@
-/// @brief   Debug Macros
-/// @author  Patrick Auernig
-/// @date    2018-04-01
-/// @file    debug.h
+//! @brief  Debug Macros
+//! @author Patrick Auernig
+//! @date   2018-04-01
+//! @file   debug.h
 
 #pragma once
 

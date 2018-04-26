@@ -1,7 +1,7 @@
-/// @brief  String abstraction
-/// @author Patrick Auernig
-/// @date   2018-04-26
-/// @file   text.h
+//! @brief  String abstraction
+//! @author Patrick Auernig
+//! @date   2018-04-26
+//! @file   text.h
 
 #pragma once
 

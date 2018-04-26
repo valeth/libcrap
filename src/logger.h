@@ -1,3 +1,8 @@
+//! @brief  Logging interface
+//! @author Patrick Auernig
+//! @date   2018-04-26
+//! @file   logger.h
+
 #pragma once
 
 #include <stdlib.h>
@@ -12,11 +17,11 @@
     #define CO_NON ""
     #define CO_STR(S, C) S
 #else
-    #define CO_RED "\e[0;31m"  /**< @brief  Red */
-    #define CO_YLW "\e[0;33m"  /**< @brief  Dark Yellow */
-    #define CO_GRN "\e[0;32m"  /**< @brief  Green */
-    #define CO_DEF "\e[1;39m"  /**< @brief  Default Foreground */
-    #define CO_NON "\e[0m"     /**< @brief  Reset color */
+    #define CO_RED "\e[0;31m"  ///< Red
+    #define CO_YLW "\e[0;33m"  ///< Dark Yellow
+    #define CO_GRN "\e[0;32m"  ///< Green
+    #define CO_DEF "\e[1;39m"  ///< Default Foreground
+    #define CO_NON "\e[0m"     ///< Reset color
     #define CO_STR(S, C) C S CO_NON
 #endif
 

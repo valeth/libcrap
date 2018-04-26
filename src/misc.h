@@ -1,3 +1,8 @@
+//! @brief  Helper functions, macros, typedefs, etc.
+//! @author Patrick Auernig
+//! @date   2018-04-26
+//! @file   misc.h
+
 #pragma once
 
 
