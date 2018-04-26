@@ -39,7 +39,7 @@ $(TARGET): $(OBJECTS) | builddir
 	ar rcsv $@ $^
 
 
-.PHONY: builddir clean tests
+.PHONY: builddir clean tests doc
 
 all: shared
 
@@ -51,8 +51,10 @@ builddir:
 	@mkdir -pv $(BUILD_DIR)/objects
 
 clean:
-	@rm -vr $(BUILD_DIR) $(TESTS) $(patsubst tests/%, tests/valgrind-%.log, $(TESTS))
+	@rm -vrf $(BUILD_DIR) $(TESTS) $(patsubst tests/%, tests/valgrind-%.log, $(TESTS)) doc
 
+doc:
+	@doxygen Doxyfile
 
 # --- Tests ---
 test: $(TESTS)
