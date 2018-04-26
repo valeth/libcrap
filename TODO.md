@@ -4,14 +4,14 @@
 ## Objects
 
 - [x] `List` (Doubly Linked List)
-- [ ] `Vec` (Dynamic Array)
-- [ ] `String`
+- [x] `Vec` (Dynamic Array)
+- [ ] `Text` (String)
 - [ ] `Channel` (Message Queue)
 
 
 ## Conversions
 
-### `to_string`
+### `to_text`
 - [ ] List
 - [ ] Vec
 
