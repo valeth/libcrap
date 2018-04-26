@@ -160,3 +160,14 @@ Size vec_capacity(Vec vec) {
 rescue:
     return 0;
 }
+
+Vec vec_extend(Vec vec, Vec other) {
+    check(vec, "Invalid vector");
+    check(other, "Invalid other vector");
+    for (Size i = 0; i < vec_size(other); ++i) {
+        vec_append(vec, vec_get(other, i));
+    }
+    return vec;
+rescue:
+    return nil;
+}

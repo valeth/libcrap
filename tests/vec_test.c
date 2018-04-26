@@ -113,10 +113,43 @@ after:
 example_end
 
 
+example(extend)
+    Vec vec = vec_new();
+    Vec vec2 = vec_new();
+    int values[9] = { 9, 7, 3, 5, 2, 42, 12, 82, 19 };
+
+    for (int i = 0; i < 5; ++i) {
+        vec_append(vec, &values[i]);
+    }
+
+    for (int i = 5; i < 9; ++i) {
+        vec_append(vec2, &values[i]);
+    }
+
+    vec_extend(vec, vec2);
+    assert_false(vec_is_empty(vec));
+    assert_eq(9, vec_size(vec));
+    assert_eq(16, vec_capacity(vec));
+    assert_eq(9, *(int*)vec_get(vec, 0));
+    assert_eq(7, *(int*)vec_get(vec, 1));
+    assert_eq(3, *(int*)vec_get(vec, 2));
+    assert_eq(5, *(int*)vec_get(vec, 3));
+    assert_eq(2, *(int*)vec_get(vec, 4));
+    assert_eq(42, *(int*)vec_get(vec, 5));
+    assert_eq(12, *(int*)vec_get(vec, 6));
+    assert_eq(82, *(int*)vec_get(vec, 7));
+    assert_eq(19, *(int*)vec_get(vec, 8));
+
+after:
+    vec_drop(vec);
+    vec_drop(vec2);
+example_end
+
+
 describe(Vec)
     test(create_and_drop);
     test(insert_and_delete);
     test(prepend_and_shift);
     test(append_and_pop);
-    // test(extend)
+    test(extend)
 describe_end

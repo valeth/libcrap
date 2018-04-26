@@ -46,3 +46,5 @@ bool vec_is_empty(Vec);
 Size vec_size(Vec);
 
 Size vec_capacity(Vec);
+
+Vec vec_extend(Vec, Vec);
