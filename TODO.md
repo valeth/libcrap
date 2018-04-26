@@ -5,7 +5,7 @@
 
 - [x] `List` (Doubly Linked List)
 - [x] `Vec` (Dynamic Array)
-- [ ] `Text` (String)
+- [x] `Text` (String)
 - [ ] `Channel` (Message Queue)
 
 
