@@ -51,7 +51,7 @@ builddir:
 	@mkdir -pv $(BUILD_DIR)/objects
 
 clean:
-	@rm -vr $(BUILD_DIR) $(TESTS)
+	@rm -vr $(BUILD_DIR) $(TESTS) $(patsubst tests/%, tests/valgrind-%.log, $(TESTS))
 
 
 # --- Tests ---

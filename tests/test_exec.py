@@ -17,7 +17,7 @@ def run_test(name: str, valgrind=False) -> bool:
             "--leak-check=full",
             "--vgdb=no",
             "--time-stamp=yes",
-            "--log-file=valgrind.log",
+            "--log-file=tests/valgrind-{}.log".format(os.path.basename(name)),
             name
         ]
     else:

@@ -51,9 +51,12 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-.vscode/
+# Builds and tests
 build/
 tests/*_test
 vgcore*
 valgrind*
-.mypy_cache
+
+# Editor stuff
+.vscode/
+.mypy_cache/
