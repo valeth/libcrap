@@ -27,34 +27,34 @@ typedef void (*FnListEach)(ListNode);
 
 List list_new();
 
-void list_drop(List list);
+void list_drop(List);
 
-void list_clear(List list);
+void list_clear(List);
 
-void list_insert(List list, Index idx, Value val);
+void list_insert(List, Index, Value);
 
-void list_append(List list, Value val);
+void list_append(List, Value);
 
-void list_prepend(List list, Value val);
+void list_prepend(List, Value);
 
-Value list_delete(List list, Index idx);
+Value list_delete(List, Index);
 
-Value list_shift(List list);
+Value list_shift(List);
 
-Value list_pop(List list);
+Value list_pop(List);
 
-Value list_get(List list, Index idx);
+Value list_get(List, Index);
 
-Value list_first(List list);
+Value list_first(List);
 
-Value list_last(List list);
+Value list_last(List);
 
-bool list_is_empty(List list);
+bool list_is_empty(List);
 
-Size list_size(List list);
+Size list_size(List);
 
-List list_extend(List list, List other);
+List list_extend(List, List);
 
-void list_each(List list, FnListEach func);
+void list_each(List, FnListEach);
 
-List list_map(List list, FnListMap func);
+List list_map(List, FnListMap);
