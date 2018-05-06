@@ -16,7 +16,7 @@
 - [ ] Vec
 
 ### `to_vec`
-- [ ] List
+- [x] List
 
 ### `to_list`
-- [ ] Vec
+- [x] Vec
