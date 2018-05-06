@@ -37,10 +37,10 @@ def run_tests(valgrind=False) -> (int, list, list):
         test = os.path.basename(test_exe)
         print("Running {}...".format(test))
         if run_test(test_exe, valgrind):
-            print("Test {} successful".format(test))
+            print("Test {} successful\n".format(test))
             success.append(test)
         else:
-            print("Test {} failed".format(test))
+            print("Test {} failed\n".format(test))
             failure.append(test)
 
     return (count, success, failure)
