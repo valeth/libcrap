@@ -30,7 +30,7 @@ def run_test(name: str, valgrind=False) -> bool:
 def run_tests(valgrind=False) -> (int, list, list):
     success = []
     failure = []
-    test_exes = glob("tests/*_test")
+    test_exes = sorted(glob("tests/*_test"))
     count = len(test_exes)
 
     for test_exe in test_exes:
