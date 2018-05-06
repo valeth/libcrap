@@ -49,7 +49,7 @@ Vec vec_with_capacity(Size initial) {
     memcheck(vec);
     vec->size = 0;
     vec->capacity = initial;
-    vec->content = nil;
+    vec->content = malloc(sizeof(*vec->content) * initial);
     return vec;
 rescue:
     return nil;
