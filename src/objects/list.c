@@ -106,7 +106,7 @@ rescue:
 
 void list_drop(List list) {
     check(list, "Invalid list");
-    list_each(list, (FnListEach)node_drop);
+    list_map(list, node_drop);
     drop(list);
 rescue:
     return;
