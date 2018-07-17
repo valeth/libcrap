@@ -35,7 +35,10 @@ void logger(
 
     vsnprintf(buffer, buffer_size, fmt, args);
 
-    if (level > 2) {
+    if (level == LVL_TEST) {
+        const char* log_format = "%s\n";
+        fprintf(stream, log_format, buffer);
+    } else if (level > LVL_TEST) {
         const char* log_format = "[%5s]  (%s:%-2d %s <errno: %s>)  %s\n";
         fprintf(stream, log_format, loglevel_str[level], file, line, function_name, CLEAN_ERRNO, buffer);
     } else {
